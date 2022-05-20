@@ -1,4 +1,4 @@
-import "./App.css";
+import "./styles/App.css";
 import ListContainer from "./components/ListContainer";
 import Title from "./components/Title";
 

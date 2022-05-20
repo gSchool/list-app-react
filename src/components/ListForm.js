@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 const ListForm = ({ itemName, setItemName, items, setItems }) => {
   const [isEditing, setIsEditing] = useState(false);
