@@ -9,17 +9,22 @@ function App() {
   const [listData, setListData] = useState({});
 
   useEffect(() => {
+    ListApi.fetchTitle()
+      .then(fetchedTitle => {
+        console.log(fetchedTitle);
+        setListTitle(fetchedTitle);
+      });
+
     ListApi.fetchListData()
       .then(fetchedData => {
         setListData(fetchedData);
-      })
+      });
   }, []);
 
   return (
     <div className="App">
-      <Title />
-      <ListContainer />
-      <p>{JSON.stringify(listData)}</p>
+      <Title listTitle={listTitle} />
+      <ListContainer listData={listData} />
     </div>
   );
 }
