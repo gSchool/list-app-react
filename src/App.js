@@ -5,10 +5,8 @@ import Title from "./components/Title";
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <Title />
-        <ListContainer />
-      </header>
+      <Title />
+      <ListContainer />
     </div>
   );
 }
