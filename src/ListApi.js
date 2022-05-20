@@ -9,13 +9,22 @@ class ListApi {
       });
   }
 
+  static saveTitle (title) {
+    return fetch(`${apiURL}/title`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ title })
+    })
+    .then(response => {
+      return response.json();
+    })
+  }
+
   static fetchListData () {
     return fetch(`${apiURL}/list`)
       .then(response => response.json())
-      // .then(jsonData => {
-      //   console.log(jsonData);
-      //   return jsonData;
-      // })
       .catch(err => {
         console.log(err);
       });

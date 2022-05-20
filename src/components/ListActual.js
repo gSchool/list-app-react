@@ -1,6 +1,17 @@
+import { useEffect, useState } from "react";
 import ListItem from "./ListItem";
+import ListApi from "../ListApi";
 
-const ListActual = ({ items, setItems }) => {
+const ListActual = () => {
+  const [items, setItems] = useState([]);
+
+  useEffect(() => {
+    ListApi.fetchListData()
+    .then(fetchedData => {
+      setItems(fetchedData.items);
+    });
+  }, []);
+
   return (
     <ul>
       {items.map((item, index) => (
