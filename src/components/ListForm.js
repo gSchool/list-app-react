@@ -1,7 +1,13 @@
 import { useState } from "react";
+import ListApi from "../ListApi";
 
-const ListForm = ({ itemName, setItemName, items, setItems }) => {
+const Item = (name) => {
+  return { name };
+};
+
+const ListForm = ({ items, setItems }) => {
   const [isEditing, setIsEditing] = useState(false);
+  const [itemName, setItemName] = useState("");
 
   let element;
 
@@ -16,13 +22,10 @@ const ListForm = ({ itemName, setItemName, items, setItems }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     if (itemName !== "") {
-      const oldItems = [...items];
-      oldItems.push({
-        name: itemName,
+      ListApi.saveItem(Item(itemName)).then((res) => {
+        console.log(res);
+        setItems(res);
       });
-
-      setItems(oldItems);
-
       setIsEditing(false);
     }
   };

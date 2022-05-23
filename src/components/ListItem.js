@@ -1,16 +1,20 @@
 import EditableText from "./EditableText";
+import ListApi from "../ListApi";
 
 const ListItem = ({ itemName, index, items, setItems }) => {
-  const itemsCopy = [...items];
-
   const handleSetValue = (value) => {
+    ListApi.updateItem(index, value).then((res) => {
+      console.log(res);
+      setItems(res);
+    });
     items[index].name = value;
-    setItems(itemsCopy);
   };
 
   const handleDelete = () => {
-    itemsCopy.splice(index, 1);
-    setItems(itemsCopy);
+    ListApi.deleteItem(index).then((res) => {
+      console.log(res);
+      setItems(res);
+    });
   };
 
   return (
