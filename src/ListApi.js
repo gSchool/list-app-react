@@ -35,7 +35,7 @@ class ListApi {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(item),
+      body: JSON.stringify({ item }),
     }).then((response) => {
       return response.json();
     });

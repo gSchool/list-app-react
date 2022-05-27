@@ -1,7 +1,12 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const EditableText = ({ value, setValue }) => {
   const [isEditing, setIsEditing] = useState(false);
+  const [ editingValue, setEditingValue ] = useState('');
+
+  useEffect(() => {
+    setEditingValue(value);
+  }, [value]);
 
   let element;
 
@@ -10,18 +15,19 @@ const EditableText = ({ value, setValue }) => {
   };
 
   const handleChange = ({ target }) => {
-    setValue(target.value);
+    setEditingValue(target.value);
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    setValue(editingValue);
     setIsEditing(false);
   };
 
   if (isEditing) {
     element = (
       <form onSubmit={handleSubmit}>
-        <input type="text" value={value} onChange={handleChange} />
+        <input type="text" value={editingValue} onChange={handleChange} />
         <input type="submit" value="Done" />
       </form>
     );
