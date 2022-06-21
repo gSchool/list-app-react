@@ -24,6 +24,7 @@ const ListForm = ({ itemName, setItemName, items, setItems }) => {
       setItems(oldItems);
 
       setIsEditing(false);
+      setItemName("");
     }
   };
 
