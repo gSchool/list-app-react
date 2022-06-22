@@ -30,6 +30,7 @@ class ListApi {
   }
 
   static saveItem(item) {
+    console.log("API " + JSON.stringify(item))
     return fetch(`${apiURL}/item`, {
       method: "POST",
       headers: {
