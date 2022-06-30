@@ -1,8 +1,6 @@
-const apiURL = process.env.REACT_APP_API_URL;
-
 class ListApi {
   static fetchTitle() {
-    return fetch(`${apiURL}/title`)
+    return fetch("/title")
       .then((response) => response.text())
       .catch((err) => {
         console.log(err);
@@ -10,7 +8,7 @@ class ListApi {
   }
 
   static saveTitle(title) {
-    return fetch(`${apiURL}/title`, {
+    return fetch("/title", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -22,7 +20,7 @@ class ListApi {
   }
 
   static fetchListData() {
-    return fetch(`${apiURL}/list`)
+    return fetch("/list")
       .then((response) => response.json())
       .catch((err) => {
         console.log(err);
@@ -30,8 +28,8 @@ class ListApi {
   }
 
   static saveItem(item) {
-    console.log("API " + JSON.stringify(item))
-    return fetch(`${apiURL}/item`, {
+    console.log("API " + JSON.stringify(item));
+    return fetch("/item", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -43,7 +41,7 @@ class ListApi {
   }
 
   static updateItem(indexToUpdate, name) {
-    return fetch(`${apiURL}/item`, {
+    return fetch("/item", {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -58,7 +56,7 @@ class ListApi {
   }
 
   static deleteItem(indexToDelete) {
-    return fetch(`${apiURL}/item`, {
+    return fetch("/item", {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
