@@ -9,7 +9,7 @@ module.exports = function App() {
   app.use(express.json());
 
   app.use(express.static("./build"))
-  app.use(createProxyMiddleware({ target: process.env.REACT_APP_API_URL, changeOrigin: true }));
+  app.use('/', createProxyMiddleware({ target: process.env.REACT_APP_API_URL, changeOrigin: true }));
 
   return app;
 };
